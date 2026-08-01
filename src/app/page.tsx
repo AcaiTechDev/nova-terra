@@ -32,17 +32,17 @@ const destaques = [
 export default function HomePage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-night-900 text-white">
-        <div className="absolute inset-0 bg-gradient-to-br from-terra-700/40 via-night-900 to-night-900" />
+      <section className="relative overflow-hidden bg-white">
+        <div className="absolute inset-0 bg-gradient-to-br from-terra-50 via-white to-white" />
         <div className="relative mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 sm:py-32">
-          <p className="text-sm font-semibold uppercase tracking-widest text-terra-300">
+          <p className="text-sm font-semibold uppercase tracking-widest text-terra-600">
             Icoaraci, Belém-PA
           </p>
-          <h1 className="mt-4 font-serif text-3xl font-bold leading-tight sm:text-5xl">
+          <h1 className="mt-4 font-serif text-3xl font-bold leading-tight text-night-900 sm:text-5xl">
             Icoaraci não tem igreja perfeita. Mas tem uma igreja em
             avivamento — e ela pode ter o seu nome também.
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-night-800/70 sm:text-lg">
             A Igreja Nova Terra existe para ganhar, cuidar e capacitar vidas
             para o Reino de Deus. Se você está buscando um lugar para
             recomeçar, crescer na fé ou servir, este é o seu convite.
@@ -54,7 +54,7 @@ export default function HomePage() {
             <CTAButton
               href={whatsappLink("Olá! Gostaria de pedir oração.")}
               external
-              variant="ghost"
+              variant="secondary"
             >
               Quero pedir oração
             </CTAButton>
