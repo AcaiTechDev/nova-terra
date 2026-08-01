@@ -1,0 +1,65 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import PageHero from "@/components/PageHero";
+import CTAButton from "@/components/CTAButton";
+import { redes, getRedeBySlug } from "@/lib/redes";
+import { whatsappLink } from "@/lib/site";
+
+type Props = { params: { slug: string } };
+
+export function generateStaticParams() {
+  return redes.map((r) => ({ slug: r.slug }));
+}
+
+export function generateMetadata({ params }: Props): Metadata {
+  const rede = getRedeBySlug(params.slug);
+  if (!rede) return {};
+  return {
+    title: rede.nome,
+    description: rede.resumo,
+  };
+}
+
+export default function RedePage({ params }: Props) {
+  const rede = getRedeBySlug(params.slug);
+  if (!rede) notFound();
+
+  return (
+    <>
+      <PageHero eyebrow="Redes" title={rede.nome} description={rede.resumo} />
+      <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+        <p className="leading-relaxed text-night-800/80">{rede.descricao}</p>
+
+        <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          <div className="rounded-xl border border-terra-100 bg-terra-50/60 p-5">
+            <p className="text-xs font-semibold uppercase tracking-wide text-terra-600">
+              Para quem
+            </p>
+            <p className="mt-1 text-sm text-night-800/80">{rede.paraQuem}</p>
+          </div>
+          <div className="rounded-xl border border-terra-100 bg-terra-50/60 p-5">
+            <p className="text-xs font-semibold uppercase tracking-wide text-terra-600">
+              Ritmo de encontros
+            </p>
+            <p className="mt-1 text-sm text-night-800/80">{rede.ritmo}</p>
+          </div>
+        </div>
+
+        {rede.lideranca && (
+          <p className="mt-4 text-xs italic text-amber-700">
+            Liderança: {rede.lideranca}
+          </p>
+        )}
+
+        <div className="mt-10 text-center">
+          <CTAButton
+            href={whatsappLink(`Olá! Quero participar da Rede ${rede.nome}.`)}
+            external
+          >
+            Quero participar da {rede.nome}
+          </CTAButton>
+        </div>
+      </article>
+    </>
+  );
+}
