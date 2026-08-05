@@ -7,6 +7,7 @@ create table if not exists public.inscricoes (
   evento_slug text not null,
   evento_titulo text not null,
   nome text not null,
+  email text,
   telefone text not null,
   endereco text not null,
   membro boolean not null,

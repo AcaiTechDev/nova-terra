@@ -49,6 +49,20 @@ export default function InscricaoForm({ evento }: { evento: Evento }) {
       </div>
 
       <div>
+        <label htmlFor="email" className="block text-sm font-medium text-night-900">
+          E-mail
+        </label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          className="mt-1 w-full rounded-lg border border-terra-200 px-4 py-2.5 text-sm focus:border-terra-500 focus:outline-none focus:ring-1 focus:ring-terra-500"
+          placeholder="seuemail@exemplo.com"
+        />
+      </div>
+
+      <div>
         <label htmlFor="telefone" className="block text-sm font-medium text-night-900">
           Telefone / WhatsApp
         </label>

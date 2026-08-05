@@ -18,6 +18,7 @@ export async function inscreverEmEvento(
 ): Promise<InscricaoState> {
   const eventoSlug = String(formData.get("eventoSlug") || "");
   const nome = String(formData.get("nome") || "").trim();
+  const email = String(formData.get("email") || "").trim();
   const telefone = String(formData.get("telefone") || "").trim();
   const endereco = String(formData.get("endereco") || "").trim();
   const membroRaw = String(formData.get("membro") || "");
@@ -30,6 +31,10 @@ export async function inscreverEmEvento(
 
   if (!nome || nome.length < 3) {
     return { status: "error", message: "Informe seu nome completo." };
+  }
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email || !emailRegex.test(email)) {
+    return { status: "error", message: "Informe um e-mail válido." };
   }
   if (limparTelefone(telefone).length < 10) {
     return {
@@ -63,6 +68,7 @@ export async function inscreverEmEvento(
     evento_slug: evento.slug,
     evento_titulo: evento.titulo,
     nome,
+    email,
     telefone: limparTelefone(telefone),
     endereco,
     membro: membroRaw === "sim",
