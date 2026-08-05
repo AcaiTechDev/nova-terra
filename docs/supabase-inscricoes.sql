@@ -22,3 +22,6 @@ alter table public.inscricoes enable row level security;
 -- Índice útil para filtrar inscritos por evento no painel do Supabase.
 create index if not exists inscricoes_evento_slug_idx
   on public.inscricoes (evento_slug);
+
+-- As tabelas `eventos` e `noticias` (usadas pelo painel admin e pelo
+-- site público) estão documentadas em docs/supabase-eventos-noticias.sql.
