@@ -24,7 +24,7 @@ export async function inscreverEmEvento(
   const membroRaw = String(formData.get("membro") || "");
   const segmento = String(formData.get("segmento") || "").trim();
 
-  const evento = getEventoBySlug(eventoSlug);
+  const evento = await getEventoBySlug(eventoSlug);
   if (!evento) {
     return { status: "error", message: "Evento não encontrado." };
   }

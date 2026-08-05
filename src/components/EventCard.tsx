@@ -9,10 +9,19 @@ const iconesPorCategoria: Record<Evento["categoria"], string> = {
 export default function EventCard({ evento }: { evento: Evento }) {
   return (
     <div className="flex flex-col overflow-hidden rounded-2xl border border-terra-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md">
-      <div className="relative flex h-40 items-center justify-center bg-gradient-to-br from-terra-100 via-terra-50 to-white">
-        <span className="text-4xl text-terra-400" aria-hidden="true">
-          {iconesPorCategoria[evento.categoria]}
-        </span>
+      <div className="relative flex h-40 items-center justify-center overflow-hidden bg-gradient-to-br from-terra-100 via-terra-50 to-white">
+        {evento.imagemUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={evento.imagemUrl}
+            alt={evento.titulo}
+            className="h-full w-full object-cover"
+          />
+        ) : (
+          <span className="text-4xl text-terra-400" aria-hidden="true">
+            {iconesPorCategoria[evento.categoria]}
+          </span>
+        )}
         {evento.categoria === "empreendedores" && (
           <span className="absolute right-3 top-3 rounded-full bg-terra-600 px-3 py-1 text-xs font-semibold text-white">
             Empreendedores

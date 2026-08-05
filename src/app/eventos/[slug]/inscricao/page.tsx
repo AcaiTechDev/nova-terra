@@ -2,16 +2,15 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import PageHero from "@/components/PageHero";
 import InscricaoForm from "@/components/InscricaoForm";
-import { eventos, getEventoBySlug } from "@/lib/eventos";
+import { getEventoBySlug } from "@/lib/eventos";
 
-type Props = { params: { slug: string } };
+export const dynamic = "force-dynamic";
 
-export function generateStaticParams() {
-  return eventos.filter((e) => e.inscricoesAbertas).map((e) => ({ slug: e.slug }));
-}
+type Props = { params: Promise<{ slug: string }> };
 
-export function generateMetadata({ params }: Props): Metadata {
-  const evento = getEventoBySlug(params.slug);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const evento = await getEventoBySlug(slug);
   if (!evento) return {};
   return {
     title: `Inscrição — ${evento.titulo}`,
@@ -19,8 +18,9 @@ export function generateMetadata({ params }: Props): Metadata {
   };
 }
 
-export default function InscricaoPage({ params }: Props) {
-  const evento = getEventoBySlug(params.slug);
+export default async function InscricaoPage({ params }: Props) {
+  const { slug } = await params;
+  const evento = await getEventoBySlug(slug);
   if (!evento || !evento.inscricoesAbertas) notFound();
 
   return (

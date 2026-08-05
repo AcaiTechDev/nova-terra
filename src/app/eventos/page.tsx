@@ -1,14 +1,18 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import EventCard from "@/components/EventCard";
-import { eventos } from "@/lib/eventos";
+import { getEventos } from "@/lib/eventos";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Eventos e Agenda",
   description: "Agenda de eventos da Igreja Nova Terra.",
 };
 
-export default function EventosPage() {
+export default async function EventosPage() {
+  const eventos = await getEventos();
+
   return (
     <>
       <PageHero
