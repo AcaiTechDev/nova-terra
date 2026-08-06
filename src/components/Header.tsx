@@ -60,7 +60,7 @@ export default function Header() {
                 </Link>
 
                 <div
-                  className={`fixed inset-x-0 top-16 z-40 px-3 transition-all duration-200 sm:px-6 ${
+                  className={`fixed inset-x-0 top-[76px] z-40 px-3 transition-all duration-200 sm:px-6 ${
                     subOpen === item.href
                       ? "pointer-events-auto visible translate-y-0 opacity-100"
                       : "pointer-events-none invisible -translate-y-1 opacity-0"
