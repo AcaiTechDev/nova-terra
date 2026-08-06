@@ -35,7 +35,7 @@ export default function Header() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-0.5 lg:flex">
+        <nav className="hidden items-center xl:flex xl:gap-0 2xl:gap-0.5">
           {mainNav.map((item) =>
             item.children ? (
               <div
@@ -46,7 +46,7 @@ export default function Header() {
               >
                 <Link
                   href={item.href}
-                  className="flex items-center gap-1 whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-night-800 transition hover:bg-terra-50 hover:text-terra-700"
+                  className="flex items-center gap-1 whitespace-nowrap rounded-md px-2 py-2 text-[13px] font-medium text-night-800 transition hover:bg-terra-50 hover:text-terra-700 2xl:px-3 2xl:text-sm"
                 >
                   {item.label}
                   <svg
@@ -60,54 +60,56 @@ export default function Header() {
                 </Link>
 
                 <div
-                  className={`wall-texture absolute left-1/2 top-full w-screen -translate-x-1/2 border-t border-white/10 shadow-2xl transition-all duration-200 ${
+                  className={`fixed inset-x-0 top-16 z-40 px-3 transition-all duration-200 sm:px-6 ${
                     subOpen === item.href
                       ? "pointer-events-auto visible translate-y-0 opacity-100"
                       : "pointer-events-none invisible -translate-y-1 opacity-0"
                   }`}
                 >
-                  <div className="mx-auto grid max-w-6xl gap-8 px-6 py-9 sm:px-8 md:grid-cols-[220px_1fr] md:gap-12">
-                    <div className="md:border-r md:border-white/15 md:pr-8">
-                      <p className="text-xs font-semibold uppercase tracking-widest text-white/55">
-                        {item.label}
-                      </p>
-                      {item.description && (
-                        <p className="mt-3 text-sm leading-relaxed text-white/80">
-                          {item.description}
+                  <div className="mx-auto max-w-5xl overflow-hidden rounded-2xl bg-terra-600 shadow-2xl ring-1 ring-black/5">
+                    <div className="grid gap-8 p-7 sm:p-8 md:grid-cols-[220px_1fr] md:gap-12">
+                      <div className="md:border-r md:border-white/15 md:pr-8">
+                        <p className="text-xs font-semibold uppercase tracking-widest text-white/55">
+                          {item.label}
                         </p>
-                      )}
-                      <Link
-                        href={item.href}
-                        className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-white transition-all hover:gap-2.5"
-                      >
-                        Ver visão geral
-                        <span aria-hidden>→</span>
-                      </Link>
-                    </div>
-
-                    <div
-                      className={`grid gap-x-6 gap-y-1 ${
-                        item.children.length > 8
-                          ? "sm:grid-cols-2 lg:grid-cols-3"
-                          : "sm:grid-cols-2"
-                      }`}
-                    >
-                      {item.children.map((child) => (
+                        {item.description && (
+                          <p className="mt-3 text-sm leading-relaxed text-white/80">
+                            {item.description}
+                          </p>
+                        )}
                         <Link
-                          key={child.href}
-                          href={child.href}
-                          className="rounded-lg px-3 py-2.5 transition hover:bg-white/10"
+                          href={item.href}
+                          className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-white transition-all hover:gap-2.5"
                         >
-                          <span className="block text-sm font-medium leading-snug text-white">
-                            {child.label}
-                          </span>
-                          {child.description && (
-                            <span className="mt-0.5 block text-xs leading-snug text-white/60">
-                              {child.description}
-                            </span>
-                          )}
+                          Ver visão geral
+                          <span aria-hidden>→</span>
                         </Link>
-                      ))}
+                      </div>
+
+                      <div
+                        className={`grid gap-x-6 gap-y-1 ${
+                          item.children.length > 8
+                            ? "sm:grid-cols-2 lg:grid-cols-3"
+                            : "sm:grid-cols-2"
+                        }`}
+                      >
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="rounded-lg px-3 py-2.5 transition hover:bg-white/10"
+                          >
+                            <span className="block text-sm font-medium leading-snug text-white">
+                              {child.label}
+                            </span>
+                            {child.description && (
+                              <span className="mt-0.5 block text-xs leading-snug text-white/60">
+                                {child.description}
+                              </span>
+                            )}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -116,7 +118,7 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-night-800 transition hover:bg-terra-50 hover:text-terra-700"
+                className="whitespace-nowrap rounded-md px-2 py-2 text-[13px] font-medium text-night-800 transition hover:bg-terra-50 hover:text-terra-700 2xl:px-3 2xl:text-sm"
               >
                 {item.label}
               </Link>
@@ -124,7 +126,7 @@ export default function Header() {
           )}
           <Link
             href="/como-doar"
-            className="ml-2 whitespace-nowrap rounded-full bg-terra-600 px-4 py-2 text-sm font-semibold text-white shadow-sm shadow-terra-900/10 transition hover:bg-terra-700"
+            className="ml-1 whitespace-nowrap rounded-full bg-terra-600 px-3 py-2 text-[13px] font-semibold text-white shadow-sm shadow-terra-900/10 transition hover:bg-terra-700 2xl:ml-2 2xl:px-4 2xl:text-sm"
           >
             Como Doar
           </Link>
@@ -132,7 +134,7 @@ export default function Header() {
 
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-md border border-terra-200 lg:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-md border border-terra-200 xl:hidden"
           aria-label="Abrir menu"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
