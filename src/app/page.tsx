@@ -7,7 +7,7 @@ const destaques = [
     title: "Cultos da Família",
     detail: "Domingos às 08h30 e 18h30",
     cta: "Ver localização",
-    href: "/contato",
+    href: "/fale-conosco",
   },
   {
     title: "JAVAN, a Rede Jovem",

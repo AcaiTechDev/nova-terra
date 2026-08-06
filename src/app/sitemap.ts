@@ -11,12 +11,13 @@ const staticRoutes = [
   "/quem-somos/missao-e-visao",
   "/quem-somos/lideranca",
   "/jornada-de-discipulado",
+  "/jornada-de-discipulado/discipulado-na-mesa",
   "/redes",
   "/casa-amarela",
   "/eventos",
-  "/como-ajudar",
+  "/como-doar",
   "/blog",
-  "/contato",
+  "/fale-conosco",
   "/politica-de-privacidade",
 ];
 

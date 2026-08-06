@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import CTAButton from "@/components/CTAButton";
 import { whatsappLink } from "@/lib/site";
@@ -24,6 +25,7 @@ const passos = [
     n: "03",
     title: "Discipulado na Mesa",
     desc: "8 encontros em grupos pequenos, na casa de anfitriões, para trabalhar caráter e caminhar em comunhão real.",
+    href: "/jornada-de-discipulado/discipulado-na-mesa",
   },
   {
     n: "04",
@@ -61,8 +63,24 @@ export default function JornadaPage() {
             <li key={p.n} className="flex gap-5 rounded-2xl border border-terra-100 bg-white p-6 shadow-sm">
               <span className="font-serif text-2xl font-bold text-terra-300">{p.n}</span>
               <div>
-                <h2 className="font-serif text-lg font-semibold text-night-900">{p.title}</h2>
+                <h2 className="font-serif text-lg font-semibold text-night-900">
+                  {p.href ? (
+                    <Link href={p.href} className="hover:text-terra-700">
+                      {p.title}
+                    </Link>
+                  ) : (
+                    p.title
+                  )}
+                </h2>
                 <p className="mt-1 text-sm leading-relaxed text-night-800/70">{p.desc}</p>
+                {p.href && (
+                  <Link
+                    href={p.href}
+                    className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-terra-700 transition-all hover:gap-1.5"
+                  >
+                    Saiba mais <span aria-hidden>→</span>
+                  </Link>
+                )}
               </div>
             </li>
           ))}

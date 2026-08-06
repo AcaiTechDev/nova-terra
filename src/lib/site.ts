@@ -1,3 +1,5 @@
+import { redes } from "@/lib/redes";
+
 export const site = {
   name: "Igreja Nova Terra",
   fullName: "Igreja Pentecostal Missionária Nova Terra",
@@ -23,25 +25,69 @@ export const site = {
   closing: "Deus abençoe a cada um!",
 };
 
-export const mainNav = [
-  { href: "/", label: "Início" },
+export type NavChild = { href: string; label: string; description?: string };
+export type NavItem = {
+  href: string;
+  label: string;
+  description?: string;
+  children?: NavChild[];
+};
+
+export const mainNav: NavItem[] = [
+  { href: "/", label: "Home" },
   {
     href: "/quem-somos",
     label: "Quem Somos",
+    description: "Nossa história, fé e liderança.",
     children: [
-      { href: "/quem-somos/historia", label: "Nossa História" },
-      { href: "/quem-somos/fe", label: "Nossa Fé" },
-      { href: "/quem-somos/missao-e-visao", label: "Missão e Visão" },
-      { href: "/quem-somos/lideranca", label: "Liderança" },
+      {
+        href: "/quem-somos/historia",
+        label: "Nossa História",
+        description: "Como a Nova Terra começou.",
+      },
+      {
+        href: "/quem-somos/fe",
+        label: "Nossa Fé",
+        description: "O que cremos.",
+      },
+      {
+        href: "/quem-somos/missao-e-visao",
+        label: "Missão e Visão",
+        description: "Para onde caminhamos.",
+      },
+      {
+        href: "/quem-somos/lideranca",
+        label: "Liderança",
+        description: "Quem caminha à frente.",
+      },
     ],
   },
-  { href: "/jornada-de-discipulado", label: "Jornada de Discipulado" },
-  { href: "/redes", label: "Redes" },
-  { href: "/casa-amarela", label: "Casa Amarela" },
-  { href: "/eventos", label: "Eventos e Agenda" },
-  { href: "/como-ajudar", label: "Como Ajudar" },
+  {
+    href: "/redes",
+    label: "Redes",
+    description: "17 frentes de serviço, cuidado e crescimento.",
+    children: redes.map((rede) => ({
+      href: `/redes/${rede.slug}`,
+      label: rede.nome,
+    })),
+  },
+  {
+    href: "/jornada-de-discipulado",
+    label: "Jornada de Discipulado",
+    description: "Seu próximo passo na Nova Terra.",
+    children: [
+      {
+        href: "/jornada-de-discipulado/discipulado-na-mesa",
+        label: "Discipulado na Mesa",
+        description: "O que é e como participar.",
+      },
+    ],
+  },
+  { href: "/casa-amarela", label: "Projeto Casa Amarela" },
+  { href: "/eventos", label: "Eventos" },
+  { href: "/como-doar", label: "Como Doar" },
   { href: "/blog", label: "Notícias" },
-  { href: "/contato", label: "Contato" },
+  { href: "/fale-conosco", label: "Fale Conosco" },
 ];
 
 export function whatsappLink(message: string) {

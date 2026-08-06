@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { mainNav, site } from "@/lib/site";
 
@@ -6,15 +7,14 @@ export default function Footer() {
     <footer className="border-t border-terra-100 bg-white text-night-800">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-4">
         <div className="md:col-span-2">
-          <div className="flex items-center gap-2">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-terra-600 font-serif text-lg font-bold text-white">
-              NT
-            </span>
-            <span className="font-serif text-lg font-semibold text-night-900">
-              Igreja Nova Terra
-            </span>
-          </div>
-          <p className="mt-4 max-w-sm text-sm leading-relaxed text-night-800/70">
+          <Image
+            src="/logo-igreja-nova-terra.webp"
+            alt="Igreja Nova Terra — ícone de leão e chama com o nome da igreja"
+            width={974}
+            height={482}
+            className="h-10 w-auto"
+          />
+          <p className="mt-5 max-w-sm text-sm leading-relaxed text-night-800/70">
             Existimos para ganhar, cuidar e capacitar vidas para o Reino de
             Deus, em Icoaraci, Belém-PA. {site.closing}
           </p>
