@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { mainNav } from "@/lib/site";
 
@@ -11,11 +11,31 @@ export default function Header() {
   const [subOpen, setSubOpen] = useState<string | null>(null);
   const [mobileSubOpen, setMobileSubOpen] = useState<string | null>(null);
   const pathname = usePathname();
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     setOpen(false);
     setMobileSubOpen(null);
   }, [pathname]);
+
+  useEffect(() => {
+    return () => {
+      if (closeTimer.current) clearTimeout(closeTimer.current);
+    };
+  }, []);
+
+  function openSub(href: string) {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+    setSubOpen(href);
+  }
+
+  function scheduleCloseSub() {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setSubOpen(null), 250);
+  }
 
   return (
     <header className="sticky top-0 z-50 border-b border-terra-100 bg-white/95 backdrop-blur">
@@ -41,8 +61,8 @@ export default function Header() {
               <div
                 key={item.href}
                 className="group relative"
-                onMouseEnter={() => setSubOpen(item.href)}
-                onMouseLeave={() => setSubOpen(null)}
+                onMouseEnter={() => openSub(item.href)}
+                onMouseLeave={scheduleCloseSub}
               >
                 <Link
                   href={item.href}
