@@ -39,8 +39,7 @@ export default function HomePage() {
             Icoaraci, Belém-PA
           </p>
           <h1 className="mt-4 font-serif text-3xl font-bold leading-tight text-night-900 sm:text-5xl">
-            Icoaraci não tem igreja perfeita. Mas tem uma igreja em
-            avivamento — e ela pode ter o seu nome também.
+            Nós somos o Avivamento. E ele também pode ter o seu nome.
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-night-800/70 sm:text-lg">
             A Igreja Nova Terra existe para ganhar, cuidar e capacitar vidas
