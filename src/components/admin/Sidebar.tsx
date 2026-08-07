@@ -8,6 +8,7 @@ const links = [
   { href: "/admin/inscritos", label: "Inscritos" },
   { href: "/admin/eventos", label: "Eventos" },
   { href: "/admin/noticias", label: "Notícias" },
+  { href: "/admin/empresas", label: "Empresas" },
 ];
 
 export default function Sidebar() {

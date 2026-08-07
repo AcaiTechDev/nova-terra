@@ -15,6 +15,7 @@ const staticRoutes = [
   "/redes",
   "/casa-amarela",
   "/eventos",
+  "/empreendedores",
   "/como-doar",
   "/blog",
   "/fale-conosco",

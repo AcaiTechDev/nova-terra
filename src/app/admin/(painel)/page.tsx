@@ -5,19 +5,21 @@ import { getSupabaseServerClient } from "@/lib/supabaseServer";
 async function getCounts() {
   const supabase = getSupabaseServerClient();
   if (!supabase) {
-    return { inscritos: null, eventos: null, noticias: null };
+    return { inscritos: null, eventos: null, noticias: null, empresas: null };
   }
 
-  const [inscritos, eventos, noticias] = await Promise.all([
+  const [inscritos, eventos, noticias, empresas] = await Promise.all([
     supabase.from("inscricoes").select("id", { count: "exact", head: true }),
     supabase.from("eventos").select("id", { count: "exact", head: true }),
     supabase.from("noticias").select("id", { count: "exact", head: true }),
+    supabase.from("empresas").select("id", { count: "exact", head: true }),
   ]);
 
   return {
     inscritos: inscritos.count,
     eventos: eventos.count,
     noticias: noticias.count,
+    empresas: empresas.count,
   };
 }
 
@@ -45,6 +47,11 @@ export default async function AdminHomePage() {
       value: counts.noticias,
       href: "/admin/noticias",
     },
+    {
+      label: "Empresas cadastradas",
+      value: counts.empresas,
+      href: "/admin/empresas",
+    },
   ];
 
   return (
@@ -53,10 +60,10 @@ export default async function AdminHomePage() {
         Bem-vindo{user?.email ? `, ${user.email}` : ""}
       </h1>
       <p className="mt-2 text-sm text-night-800/70">
-        Use o menu para gerenciar inscritos, eventos e notícias.
+        Use o menu para gerenciar inscritos, eventos, notícias e empresas.
       </p>
 
-      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {cards.map((card) => (
           <Link
             key={card.href}

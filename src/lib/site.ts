@@ -66,25 +66,21 @@ export const mainNav: NavItem[] = [
     href: "/redes",
     label: "Redes",
     description: "17 frentes de serviço, cuidado e crescimento.",
-    children: redes.map((rede) => ({
-      href: `/redes/${rede.slug}`,
-      label: rede.nome,
-    })),
-  },
-  {
-    href: "/jornada-de-discipulado",
-    label: "Jornada de Discipulado",
-    description: "Seu próximo passo na Nova Terra.",
     children: [
       {
         href: "/jornada-de-discipulado/discipulado-na-mesa",
         label: "Discipulado na Mesa",
         description: "O que é e como participar.",
       },
+      ...redes.map((rede) => ({
+        href: `/redes/${rede.slug}`,
+        label: rede.nome,
+      })),
     ],
   },
   { href: "/casa-amarela", label: "Projeto Casa Amarela" },
   { href: "/eventos", label: "Eventos" },
+  { href: "/empreendedores", label: "Empreendedores" },
   { href: "/como-doar", label: "Como Doar" },
   { href: "/blog", label: "Notícias" },
   { href: "/fale-conosco", label: "Fale Conosco" },
