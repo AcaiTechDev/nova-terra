@@ -35,6 +35,14 @@ export default async function InscricaoPage({ params }: Props) {
         }
       />
       <section className="mx-auto max-w-xl px-4 py-16 sm:px-6">
+        {evento.imagemUrl && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={evento.imagemUrl}
+            alt={evento.titulo}
+            className="mb-8 aspect-[4/3] w-full rounded-2xl object-cover"
+          />
+        )}
         <InscricaoForm evento={evento} />
       </section>
     </>

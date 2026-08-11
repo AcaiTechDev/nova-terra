@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { getSupabaseServerClient } from "@/lib/supabaseServer";
+import { optimizeImage } from "@/lib/imageProcessing";
 
 export type EmpresaFormState = {
   status: "idle" | "success" | "error";
@@ -16,12 +17,17 @@ async function uploadImagem(
 ) {
   if (!file || file.size === 0) return null;
 
-  const extensao = file.name.split(".").pop() || "jpg";
+  const { buffer, contentType, extensao } = await optimizeImage(
+    file,
+    pasta === "logo"
+      ? { width: 400, height: 400, fit: "cover" }
+      : { width: 1200, fit: "inside" }
+  );
   const caminho = `empresas/${pasta}/${slug}-${Date.now()}.${extensao}`;
 
   const { error } = await supabase.storage
     .from("media")
-    .upload(caminho, file, { upsert: true, contentType: file.type });
+    .upload(caminho, buffer, { upsert: true, contentType });
 
   if (error) {
     throw new Error("Não foi possível enviar a imagem.");

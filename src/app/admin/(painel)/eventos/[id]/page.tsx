@@ -13,7 +13,7 @@ async function getEvento(id: string): Promise<EventoExistente | null> {
   const { data } = await supabase
     .from("eventos")
     .select(
-      "id, slug, titulo, detalhe, descricao, categoria, imagem_url, inscricoes_abertas, publicado, ordem"
+      "id, slug, titulo, detalhe, descricao, categoria, imagem_url, inscricoes_abertas, publicado, ordem, gratuito, preco, palestrante, data_evento, hora_evento, patrocinadores"
     )
     .eq("id", id)
     .single();

@@ -21,7 +21,13 @@ export type EventoExistente = {
   ordem: number;
   gratuito: boolean;
   preco: number | null;
+  palestrante: string | null;
+  data_evento: string | null;
+  hora_evento: string | null;
+  patrocinadores: { nome: string; logoUrl: string | null }[];
 };
+
+const MAX_PATROCINADORES = 5;
 
 export default function EventoForm({
   evento,
@@ -98,6 +104,58 @@ export default function EventoForm({
           name="detalhe"
           type="text"
           defaultValue={evento?.detalhe ?? ""}
+          className="mt-1 w-full rounded-lg border border-terra-200 px-4 py-2.5 text-sm focus:border-terra-500 focus:outline-none focus:ring-1 focus:ring-terra-500"
+        />
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label
+            htmlFor="dataEvento"
+            className="block text-sm font-medium text-night-900"
+          >
+            Data do evento
+          </label>
+          <input
+            id="dataEvento"
+            name="dataEvento"
+            type="date"
+            defaultValue={evento?.data_evento ?? ""}
+            className="mt-1 w-full rounded-lg border border-terra-200 px-4 py-2.5 text-sm focus:border-terra-500 focus:outline-none focus:ring-1 focus:ring-terra-500"
+          />
+        </div>
+
+        <div>
+          <label
+            htmlFor="horaEvento"
+            className="block text-sm font-medium text-night-900"
+          >
+            Horário
+          </label>
+          <input
+            id="horaEvento"
+            name="horaEvento"
+            type="text"
+            defaultValue={evento?.hora_evento ?? ""}
+            placeholder="ex: 19h ou 08h30"
+            className="mt-1 w-full rounded-lg border border-terra-200 px-4 py-2.5 text-sm focus:border-terra-500 focus:outline-none focus:ring-1 focus:ring-terra-500"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label
+          htmlFor="palestrante"
+          className="block text-sm font-medium text-night-900"
+        >
+          Palestrante (opcional)
+        </label>
+        <input
+          id="palestrante"
+          name="palestrante"
+          type="text"
+          defaultValue={evento?.palestrante ?? ""}
+          placeholder="Nome de quem vai palestrar/ministrar"
           className="mt-1 w-full rounded-lg border border-terra-200 px-4 py-2.5 text-sm focus:border-terra-500 focus:outline-none focus:ring-1 focus:ring-terra-500"
         />
       </div>
@@ -214,14 +272,18 @@ export default function EventoForm({
           htmlFor="imagem"
           className="block text-sm font-medium text-night-900"
         >
-          Imagem do evento
+          Imagem de capa
         </label>
+        <p className="mt-1 text-xs text-night-800/50">
+          Exibida em proporção 4:3 nos cards. A imagem é otimizada
+          automaticamente para a web ao salvar.
+        </p>
         {evento?.imagem_url && (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={evento.imagem_url}
             alt=""
-            className="mt-2 h-32 w-full max-w-xs rounded-lg object-cover"
+            className="mt-2 aspect-[4/3] w-full max-w-xs rounded-lg object-cover"
           />
         )}
         <input
@@ -229,8 +291,53 @@ export default function EventoForm({
           name="imagem"
           type="file"
           accept="image/*"
-          className="mt-1 w-full rounded-lg border border-terra-200 px-4 py-2.5 text-sm focus:border-terra-500 focus:outline-none focus:ring-1 focus:ring-terra-500"
+          className="mt-2 w-full rounded-lg border border-terra-200 px-4 py-2.5 text-sm focus:border-terra-500 focus:outline-none focus:ring-1 focus:ring-terra-500"
         />
+      </div>
+
+      <div>
+        <span className="block text-sm font-medium text-night-900">
+          Patrocinadores (opcional, até {MAX_PATROCINADORES})
+        </span>
+        <div className="mt-2 space-y-3">
+          {Array.from({ length: MAX_PATROCINADORES }, (_, i) => {
+            const n = i + 1;
+            const atual = evento?.patrocinadores?.[i];
+            return (
+              <div
+                key={n}
+                className="grid gap-3 rounded-lg border border-terra-100 p-3 sm:grid-cols-[1fr_auto_auto] sm:items-center"
+              >
+                <input
+                  name={`patrocinadorNome${n}`}
+                  type="text"
+                  defaultValue={atual?.nome ?? ""}
+                  placeholder={`Nome do patrocinador ${n}`}
+                  className="w-full rounded-lg border border-terra-200 px-3 py-2 text-sm focus:border-terra-500 focus:outline-none focus:ring-1 focus:ring-terra-500"
+                />
+                {atual?.logoUrl && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={atual.logoUrl}
+                    alt=""
+                    className="h-10 w-10 rounded-md border border-terra-100 object-contain"
+                  />
+                )}
+                <input
+                  name={`patrocinadorLogo${n}`}
+                  type="file"
+                  accept="image/*"
+                  className="w-full text-xs sm:w-40"
+                />
+                <input
+                  type="hidden"
+                  name={`patrocinadorLogoAtual${n}`}
+                  defaultValue={atual?.logoUrl ?? ""}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       <div className="flex gap-6">
