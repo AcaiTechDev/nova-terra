@@ -19,9 +19,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: evento.titulo,
     description: evento.descricao,
     openGraph: {
+      type: "website",
       title: evento.titulo,
       description: evento.descricao,
-      images: evento.imagemUrl ? [{ url: evento.imagemUrl }] : undefined,
+      images: evento.imagemUrl
+        ? [
+            {
+              url: evento.imagemUrl,
+              width: 1200,
+              height: 900,
+              alt: evento.titulo,
+            },
+          ]
+        : undefined,
     },
     twitter: {
       card: "summary_large_image",

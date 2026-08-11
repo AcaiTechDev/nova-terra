@@ -22,6 +22,9 @@ async function uploadImagemCapa(
     width: 1200,
     height: 900,
     fit: "cover",
+    // WhatsApp/Facebook nao renderizam bem preview de og:image em WebP
+    format: "jpeg",
+    quality: 85,
   });
   const caminho = `eventos/${slug}-${Date.now()}.${extensao}`;
 

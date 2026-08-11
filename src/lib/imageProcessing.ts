@@ -6,6 +6,7 @@ type ProcessOptions = {
   height?: number;
   fit?: "cover" | "contain" | "inside";
   quality?: number;
+  format?: "webp" | "jpeg";
 };
 
 export async function optimizeImage(
@@ -30,9 +31,17 @@ export async function optimizeImage(
     });
   }
 
-  const buffer = await pipeline
-    .webp({ quality: options.quality ?? 80 })
-    .toBuffer();
+  const format = options.format ?? "webp";
+  const quality = options.quality ?? 80;
 
-  return { buffer, contentType: "image/webp", extensao: "webp" };
+  const buffer =
+    format === "jpeg"
+      ? await pipeline.flatten({ background: "#ffffff" }).jpeg({ quality }).toBuffer()
+      : await pipeline.webp({ quality }).toBuffer();
+
+  return {
+    buffer,
+    contentType: format === "jpeg" ? "image/jpeg" : "image/webp",
+    extensao: format === "jpeg" ? "jpg" : "webp",
+  };
 }

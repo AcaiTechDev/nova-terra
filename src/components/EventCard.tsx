@@ -27,7 +27,7 @@ function RelogioIcon() {
 
 export default function EventCard({ evento }: { evento: Evento }) {
   return (
-    <div className="flex flex-col overflow-hidden rounded-2xl border border-terra-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+    <div className="flex flex-col overflow-hidden rounded-2xl border border-terra-100 bg-terra-50/50 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
       <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-terra-100 via-terra-50 to-white">
         {evento.imagemUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
