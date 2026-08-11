@@ -19,6 +19,8 @@ export type EventoExistente = {
   inscricoes_abertas: boolean;
   publicado: boolean;
   ordem: number;
+  gratuito: boolean;
+  preco: number | null;
 };
 
 export default function EventoForm({
@@ -29,6 +31,7 @@ export default function EventoForm({
   const router = useRouter();
   const [state, setState] = useState<EventoFormState>({ status: "idle" });
   const [isPending, startTransition] = useTransition();
+  const [gratuito, setGratuito] = useState(evento?.gratuito ?? true);
 
   function handleSubmit(formData: FormData) {
     startTransition(async () => {
@@ -150,6 +153,60 @@ export default function EventoForm({
             className="mt-1 w-full rounded-lg border border-terra-200 px-4 py-2.5 text-sm focus:border-terra-500 focus:outline-none focus:ring-1 focus:ring-terra-500"
           />
         </div>
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div>
+          <span className="block text-sm font-medium text-night-900">
+            Valor
+          </span>
+          <div className="mt-1 flex gap-6 rounded-lg border border-terra-200 px-4 py-2.5">
+            <label className="flex items-center gap-2 text-sm text-night-800">
+              <input
+                type="radio"
+                name="valorTipo"
+                value="gratuito"
+                checked={gratuito}
+                onChange={() => setGratuito(true)}
+                className="accent-terra-600"
+              />
+              Gratuito
+            </label>
+            <label className="flex items-center gap-2 text-sm text-night-800">
+              <input
+                type="radio"
+                name="valorTipo"
+                value="pago"
+                checked={!gratuito}
+                onChange={() => setGratuito(false)}
+                className="accent-terra-600"
+              />
+              Pago
+            </label>
+          </div>
+        </div>
+
+        {!gratuito && (
+          <div>
+            <label
+              htmlFor="preco"
+              className="block text-sm font-medium text-night-900"
+            >
+              Preço (R$)
+            </label>
+            <input
+              id="preco"
+              name="preco"
+              type="number"
+              min="0"
+              step="0.01"
+              required={!gratuito}
+              defaultValue={evento?.preco ?? ""}
+              placeholder="ex: 25,00"
+              className="mt-1 w-full rounded-lg border border-terra-200 px-4 py-2.5 text-sm focus:border-terra-500 focus:outline-none focus:ring-1 focus:ring-terra-500"
+            />
+          </div>
+        )}
       </div>
 
       <div>

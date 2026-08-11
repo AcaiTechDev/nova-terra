@@ -44,6 +44,11 @@ function lerCamposComuns(formData: FormData) {
     inscricoesAbertas: formData.get("inscricoesAbertas") === "on",
     publicado: formData.get("publicado") === "on",
     ordem: Number(formData.get("ordem") || 0),
+    gratuito: formData.get("valorTipo") !== "pago",
+    preco:
+      formData.get("valorTipo") !== "pago"
+        ? null
+        : Number(String(formData.get("preco") || "0").replace(",", ".")) || 0,
   };
 }
 
@@ -81,6 +86,8 @@ export async function criarEvento(
     inscricoes_abertas: campos.inscricoesAbertas,
     publicado: campos.publicado,
     ordem: campos.ordem,
+    gratuito: campos.gratuito,
+    preco: campos.preco,
     ...(imagemUrl ? { imagem_url: imagemUrl } : {}),
   });
 
@@ -133,6 +140,8 @@ export async function atualizarEvento(
       inscricoes_abertas: campos.inscricoesAbertas,
       publicado: campos.publicado,
       ordem: campos.ordem,
+      gratuito: campos.gratuito,
+      preco: campos.preco,
       ...(imagemUrl ? { imagem_url: imagemUrl } : {}),
     })
     .eq("id", id);

@@ -8,6 +8,8 @@ export type Evento = {
   categoria: "geral" | "empreendedores";
   imagemUrl: string | null;
   inscricoesAbertas: boolean;
+  gratuito: boolean;
+  preco: number | null;
 };
 
 function mapRow(row: any): Evento {
@@ -19,6 +21,8 @@ function mapRow(row: any): Evento {
     categoria: row.categoria,
     imagemUrl: row.imagem_url,
     inscricoesAbertas: row.inscricoes_abertas,
+    gratuito: row.gratuito,
+    preco: row.preco !== null ? Number(row.preco) : null,
   };
 }
 
@@ -29,7 +33,7 @@ export async function getEventos(): Promise<Evento[]> {
   const { data } = await supabase
     .from("eventos")
     .select(
-      "slug, titulo, descricao, detalhe, categoria, imagem_url, inscricoes_abertas"
+      "slug, titulo, descricao, detalhe, categoria, imagem_url, inscricoes_abertas, gratuito, preco"
     )
     .eq("publicado", true)
     .order("ordem", { ascending: true });
@@ -44,11 +48,15 @@ export async function getEventoBySlug(slug: string): Promise<Evento | null> {
   const { data } = await supabase
     .from("eventos")
     .select(
-      "slug, titulo, descricao, detalhe, categoria, imagem_url, inscricoes_abertas"
+      "slug, titulo, descricao, detalhe, categoria, imagem_url, inscricoes_abertas, gratuito, preco"
     )
     .eq("slug", slug)
     .eq("publicado", true)
     .single();
 
   return data ? mapRow(data) : null;
+}
+
+export function formatPreco(preco: number) {
+  return preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }

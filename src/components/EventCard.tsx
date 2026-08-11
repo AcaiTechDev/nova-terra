@@ -1,5 +1,6 @@
 import Link from "next/link";
-import type { Evento } from "@/lib/eventos";
+import { formatPreco, type Evento } from "@/lib/eventos";
+import ShareButton from "@/components/ShareButton";
 
 const iconesPorCategoria: Record<Evento["categoria"], string> = {
   geral: "✦",
@@ -30,8 +31,27 @@ export default function EventCard({ evento }: { evento: Evento }) {
       </div>
 
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="font-serif text-lg font-semibold text-night-900">
-          {evento.titulo}
+        <div className="flex items-center justify-between gap-2">
+          <span
+            className={`rounded-full px-3 py-1 text-xs font-semibold ${
+              evento.gratuito
+                ? "bg-terra-50 text-terra-700"
+                : "bg-night-900/5 text-night-900"
+            }`}
+          >
+            {evento.gratuito ? "Gratuito" : formatPreco(evento.preco ?? 0)}
+          </span>
+          <ShareButton
+            title={evento.titulo}
+            text={`Confira: ${evento.titulo} — Igreja Nova Terra`}
+            path={`/eventos/${evento.slug}`}
+          />
+        </div>
+
+        <h3 className="mt-3 font-serif text-lg font-semibold text-night-900">
+          <Link href={`/eventos/${evento.slug}`} className="hover:text-terra-700">
+            {evento.titulo}
+          </Link>
         </h3>
         <p className="mt-1 text-xs font-medium uppercase tracking-wide text-terra-600">
           {evento.detalhe}
