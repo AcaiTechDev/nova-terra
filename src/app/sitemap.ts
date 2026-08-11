@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { redes } from "@/lib/redes";
 
-const base = "https://igrejanovaterra.org.br";
+const base = "https://igrejanovaterra.com.br";
 
 const staticRoutes = [
   "",

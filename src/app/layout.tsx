@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://igrejanovaterra.org.br"),
+  metadataBase: new URL("https://igrejanovaterra.com.br"),
   title: {
     default: "Igreja Nova Terra | Icoaraci, Belém-PA",
     template: "%s | Igreja Nova Terra",

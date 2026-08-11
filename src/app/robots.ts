@@ -3,6 +3,6 @@ import type { MetadataRoute } from "next";
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: { userAgent: "*", allow: "/" },
-    sitemap: "https://igrejanovaterra.org.br/sitemap.xml",
+    sitemap: "https://igrejanovaterra.com.br/sitemap.xml",
   };
 }

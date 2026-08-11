@@ -9,7 +9,7 @@ export const site = {
   whatsapp: "5591000000000",
   whatsappDisplay: "(91) 00000-0000 — a confirmar",
   // LACUNA: confirmar e-mail oficial
-  email: "contato@igrejanovaterra.org.br",
+  email: "contato@igrejanovaterra.com.br",
   cultos: [
     { label: "Culto da Família (manhã)", quando: "Domingos, 08h30" },
     { label: "Culto da Família (noite)", quando: "Domingos, 18h30" },
