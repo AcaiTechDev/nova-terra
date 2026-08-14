@@ -100,7 +100,7 @@ export default function Header() {
                       : "pointer-events-none invisible -translate-y-1 opacity-0"
                   }`}
                 >
-                  <div className="mx-auto max-w-5xl overflow-hidden rounded-2xl bg-terra-600 shadow-2xl ring-1 ring-black/5">
+                  <div className="mx-auto max-w-5xl overflow-hidden rounded-2xl bg-terra-600/90 shadow-2xl ring-1 ring-black/5 backdrop-blur-md">
                     <div className="grid gap-8 p-7 sm:p-8 md:grid-cols-[220px_1fr] md:gap-12">
                       <div className="md:border-r md:border-white/15 md:pr-8">
                         <p className="text-xs font-semibold uppercase tracking-widest text-white/55">

@@ -59,7 +59,7 @@ export default function FaleConoscoPage() {
         <div className="overflow-hidden rounded-2xl border border-terra-100">
           <iframe
             title="Localização da Igreja Nova Terra"
-            src="https://www.google.com/maps?q=Travessa+S-5,+199,+Icoaraci,+Belém-PA&output=embed"
+            src={`https://www.google.com/maps?q=${encodeURIComponent(site.address)}&output=embed`}
             className="h-full min-h-[320px] w-full"
             loading="lazy"
           />

@@ -10,7 +10,7 @@ type Props = {
 
 export default function PageHero({ eyebrow, title, description, children }: Props) {
   return (
-    <section className="border-b border-terra-100 bg-terra-50/60">
+    <section className="border-b border-terra-100 bg-gradient-to-br from-terra-100 via-terra-50 to-white">
       <div className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6">
         {eyebrow && (
           <Reveal>

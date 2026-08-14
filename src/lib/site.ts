@@ -4,7 +4,7 @@ export const site = {
   name: "Igreja Nova Terra",
   fullName: "Igreja Pentecostal Missionária Nova Terra",
   city: "Icoaraci, Belém-PA",
-  address: "Travessa S-5, nº 199, Icoaraci, Belém-PA, CEP 66815-070",
+  address: "Tv. S-7, 107 - Campina de Icoaraci, Belém - PA, 66813-300",
   whatsapp: "5591996088508",
   whatsappDisplay: "(91) 99608-8508",
   // LACUNA: confirmar e-mail oficial

@@ -3,7 +3,7 @@ import { CATEGORIAS_EMPRESA, empresaWhatsappLink } from "@/lib/categoriasEmpresa
 
 export default function EmpresaCard({ empresa }: { empresa: Empresa }) {
   return (
-    <div className="flex flex-col overflow-hidden rounded-2xl border border-terra-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+    <div className="flex flex-col overflow-hidden rounded-2xl border border-terra-100 bg-gradient-to-br from-terra-100 via-terra-50 to-white shadow-sm transition hover:-translate-y-1 hover:shadow-md">
       <div className="relative h-24 bg-gradient-to-br from-terra-100 via-terra-50 to-white">
         {empresa.capaUrl && (
           // eslint-disable-next-line @next/next/no-img-element
