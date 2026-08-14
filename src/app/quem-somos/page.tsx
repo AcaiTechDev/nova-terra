@@ -45,7 +45,7 @@ export default function QuemSomosPage() {
             <Link
               key={l.href}
               href={l.href}
-              className="group rounded-2xl border border-terra-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+              className="group rounded-2xl border border-terra-100 bg-gradient-to-br from-terra-100 via-terra-50 to-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
             >
               <h2 className="font-serif text-xl font-semibold text-night-900">
                 {l.title}
