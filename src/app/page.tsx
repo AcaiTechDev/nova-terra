@@ -21,9 +21,9 @@ const heroSlides: HeroSlide[] = [
       },
     ],
     image: {
-      desktop: "/hero/fachada-desktop.webp",
-      mobile: "/hero/fachada-mobile.webp",
-      alt: "Fachada da Igreja Nova Terra à noite, com o logo iluminado",
+      desktop: "/hero/bandeira-desktop.webp",
+      mobile: "/hero/bandeira-mobile.webp",
+      alt: "Altar da Igreja Nova Terra decorado com flores e a bandeira de Israel",
     },
   },
   {

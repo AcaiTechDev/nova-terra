@@ -20,9 +20,10 @@ const slides = [
     name: "oracao",
     // recorte manual: a deteccao automatica de foco cortava as maos postadas
     desktopCrop: { left: 750, top: 1300, width: 4050, height: 1750 },
-    mobileCrop: { left: 1090, top: 500, width: 2720, height: 3400 },
+    mobileCrop: { left: 1450, top: 500, width: 2720, height: 3400 },
   },
   { src: "20240825_192958.jpg", name: "fachada" },
+  { src: "20250420_211644.jpg", name: "bandeira" },
 ];
 
 const DESKTOP = { width: 1920, height: 823 }; // 21:9
