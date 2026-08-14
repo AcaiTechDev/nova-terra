@@ -43,6 +43,9 @@ export default async function InscricaoPage({ params }: Props) {
             className="mb-8 aspect-[4/3] w-full rounded-2xl object-cover"
           />
         )}
+        <h2 className="mb-6 font-serif text-2xl font-bold text-night-900">
+          Faça sua Inscrição.
+        </h2>
         <InscricaoForm evento={evento} />
       </section>
     </>
