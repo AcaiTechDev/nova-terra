@@ -6,6 +6,15 @@ html {
   scroll-behavior: smooth;
 }
 
+html.lenis {
+  scroll-behavior: auto;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
 body {
   color: #1f1c1a;
 }
@@ -23,8 +32,27 @@ body {
   animation: hero-ken-burns 8s ease-out forwards;
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-ken-burns {
     animation: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }

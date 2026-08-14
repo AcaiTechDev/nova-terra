@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { mainNav } from "@/lib/site";
+import { useScrolled } from "@/lib/useScrolled";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -12,6 +13,7 @@ export default function Header() {
   const [mobileSubOpen, setMobileSubOpen] = useState<string | null>(null);
   const pathname = usePathname();
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const scrolled = useScrolled(16);
 
   useEffect(() => {
     setOpen(false);
@@ -38,8 +40,18 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-terra-100 bg-white/95 backdrop-blur">
-      <div className="relative mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
+    <header
+      className={`sticky top-0 z-50 border-b bg-white/95 backdrop-blur transition-shadow duration-300 ${
+        scrolled
+          ? "border-terra-100 shadow-sm shadow-night-900/5"
+          : "border-transparent"
+      }`}
+    >
+      <div
+        className={`relative mx-auto flex max-w-6xl items-center justify-between px-4 transition-[padding] duration-300 sm:px-6 ${
+          scrolled ? "py-2" : "py-3"
+        }`}
+      >
         <Link
           href="/"
           className="flex shrink-0 items-center"
@@ -51,7 +63,9 @@ export default function Header() {
             width={974}
             height={482}
             priority
-            className="h-9 w-auto sm:h-10"
+            className={`w-auto transition-all duration-300 ${
+              scrolled ? "h-7 sm:h-8" : "h-9 sm:h-10"
+            }`}
           />
         </Link>
 

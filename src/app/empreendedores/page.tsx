@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import EmpresaCard from "@/components/EmpresaCard";
+import Reveal from "@/components/Reveal";
 import { getEmpresas } from "@/lib/empresas";
 
 export const dynamic = "force-dynamic";
@@ -24,8 +25,10 @@ export default async function EmpreendedoresPage() {
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         {empresas.length > 0 ? (
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {empresas.map((empresa) => (
-              <EmpresaCard key={empresa.slug} empresa={empresa} />
+            {empresas.map((empresa, i) => (
+              <Reveal key={empresa.slug} delay={(i % 6) * 70}>
+                <EmpresaCard empresa={empresa} />
+              </Reveal>
             ))}
           </div>
         ) : (

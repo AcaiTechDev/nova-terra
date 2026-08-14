@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import SmoothScroll from "@/components/SmoothScroll";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://igrejanovaterra.com.br"),
@@ -35,6 +36,7 @@ export default function RootLayout({
         />
       </head>
       <body className="flex min-h-screen flex-col bg-white font-sans text-night-900">
+        <SmoothScroll />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

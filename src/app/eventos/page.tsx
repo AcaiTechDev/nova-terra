@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import EventCard from "@/components/EventCard";
+import Reveal from "@/components/Reveal";
 import { getEventos } from "@/lib/eventos";
 
 export const dynamic = "force-dynamic";
@@ -22,8 +23,10 @@ export default async function EventosPage() {
       />
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {eventos.map((evento) => (
-            <EventCard key={evento.slug} evento={evento} />
+          {eventos.map((evento, i) => (
+            <Reveal key={evento.slug} delay={(i % 6) * 70}>
+              <EventCard evento={evento} />
+            </Reveal>
           ))}
         </div>
         <p className="mt-10 text-center text-sm italic text-amber-700">

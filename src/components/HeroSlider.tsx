@@ -23,7 +23,34 @@ export default function HeroSlider({ slides }: { slides: HeroSlide[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [tick, setTick] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [parallax, setParallax] = useState(0);
   const touchStartX = useRef<number | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (prefersReducedMotion) return;
+
+    let rafId: number | null = null;
+    function onScroll() {
+      if (rafId !== null) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = null;
+        const section = sectionRef.current;
+        if (!section) return;
+        const rect = section.getBoundingClientRect();
+        if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+        setParallax(Math.max(-30, Math.min(30, rect.top * -0.12)));
+      });
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (rafId !== null) cancelAnimationFrame(rafId);
+    };
+  }, []);
 
   const goTo = useCallback((index: number) => {
     setActiveIndex((index + slides.length) % slides.length);
@@ -54,6 +81,7 @@ export default function HeroSlider({ slides }: { slides: HeroSlide[] }) {
 
   return (
     <section
+      ref={sectionRef}
       className="relative h-[500px] overflow-hidden sm:h-[640px] lg:h-[680px]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
@@ -74,7 +102,10 @@ export default function HeroSlider({ slides }: { slides: HeroSlide[] }) {
             aria-hidden={!isActive}
           >
             {slide.image ? (
-              <div className="absolute inset-0 overflow-hidden bg-night-900">
+              <div
+                className="absolute -inset-y-8 inset-x-0 overflow-hidden bg-night-900"
+                style={{ transform: `translateY(${parallax}px)` }}
+              >
                 <div
                   key={isActive ? `active-${tick}` : "idle"}
                   className={`h-full w-full ${isActive ? "hero-ken-burns" : ""}`}
