@@ -54,7 +54,7 @@ export default function HeroSlider({ slides }: { slides: HeroSlide[] }) {
 
   return (
     <section
-      className="relative h-[620px] overflow-hidden sm:h-[640px] lg:h-[680px]"
+      className="relative h-[500px] overflow-hidden sm:h-[640px] lg:h-[680px]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onTouchStart={handleTouchStart}

@@ -19,6 +19,11 @@ const heroSlides: HeroSlide[] = [
         external: true,
       },
     ],
+    image: {
+      desktop: "/hero/fachada-desktop.webp",
+      mobile: "/hero/fachada-mobile.webp",
+      alt: "Fachada da Igreja Nova Terra à noite, com o logo iluminado",
+    },
   },
   {
     id: "culto",
