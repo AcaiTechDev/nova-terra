@@ -45,7 +45,7 @@ export default function CasaAmarelaPage() {
         </h2>
         <div className="mt-6 grid gap-5 sm:grid-cols-3">
           {ofertas.map((o) => (
-            <div key={o.title} className="rounded-2xl border border-terra-100 bg-white p-6 shadow-sm">
+            <div key={o.title} className="rounded-2xl border border-terra-100 bg-gradient-to-br from-terra-100 via-terra-50 to-white p-6 shadow-sm">
               <h3 className="font-serif text-base font-semibold text-night-900">{o.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-night-800/70">{o.desc}</p>
             </div>

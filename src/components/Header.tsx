@@ -69,7 +69,7 @@ export default function Header() {
           />
         </Link>
 
-        <nav className="hidden items-center xl:flex xl:gap-0 2xl:gap-0.5">
+        <nav className="ml-8 hidden items-center xl:flex xl:gap-0 2xl:gap-0.5">
           {mainNav.map((item) =>
             item.children ? (
               <div
