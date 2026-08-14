@@ -42,6 +42,7 @@ const heroSlides: HeroSlide[] = [
   {
     id: "avivamento-multiplicacao",
     title: "Avivamento sem multiplicação morre",
+    subtitle: "Não basta sentir o fogo — o chamado é repassar a chama, geração após geração",
     buttons: [
       { label: "Nossa missão e visão", href: "/quem-somos/missao-e-visao" },
     ],
@@ -54,6 +55,7 @@ const heroSlides: HeroSlide[] = [
   {
     id: "oracao",
     title: "Um lugar seguro para orar e recomeçar",
+    subtitle: "Nenhuma dor é grande demais para ser levada até Deus — e ninguém aqui ora sozinho",
     buttons: [
       {
         label: "Quero pedir oração",
@@ -108,7 +110,7 @@ export default function HomePage() {
             <Reveal key={item.title} delay={i * 90}>
               <Link
                 href={item.href}
-                className="group flex h-full flex-col justify-between rounded-2xl border border-terra-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+                className="group flex h-full flex-col justify-between rounded-2xl border border-terra-100 bg-gradient-to-br from-terra-100 via-terra-50 to-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
               >
                 <div>
                   <h3 className="font-serif text-lg font-semibold text-night-900">
