@@ -178,7 +178,7 @@ export default function HeroSlider({ slides }: { slides: HeroSlide[] }) {
             type="button"
             onClick={prev}
             aria-label="Slide anterior"
-            className="absolute left-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur transition hover:bg-white/30 sm:left-5"
+            className="absolute left-3 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur transition hover:bg-white/30 sm:flex sm:left-5"
           >
             <svg viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current stroke-2">
               <path d="M15 5l-7 7 7 7" strokeLinecap="round" strokeLinejoin="round" />
@@ -188,7 +188,7 @@ export default function HeroSlider({ slides }: { slides: HeroSlide[] }) {
             type="button"
             onClick={next}
             aria-label="Próximo slide"
-            className="absolute right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur transition hover:bg-white/30 sm:right-5"
+            className="absolute right-3 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur transition hover:bg-white/30 sm:flex sm:right-5"
           >
             <svg viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current stroke-2">
               <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
