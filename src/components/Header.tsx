@@ -100,20 +100,20 @@ export default function Header() {
                       : "pointer-events-none invisible -translate-y-1 opacity-0"
                   }`}
                 >
-                  <div className="mx-auto max-w-5xl overflow-hidden rounded-2xl bg-terra-600/90 shadow-2xl ring-1 ring-black/5 backdrop-blur-md">
+                  <div className="mx-auto max-w-5xl overflow-hidden rounded-2xl bg-gradient-to-br from-terra-100 via-terra-50 to-white shadow-2xl ring-1 ring-black/5">
                     <div className="grid gap-8 p-7 sm:p-8 md:grid-cols-[220px_1fr] md:gap-12">
-                      <div className="md:border-r md:border-white/15 md:pr-8">
-                        <p className="text-xs font-semibold uppercase tracking-widest text-white/55">
+                      <div className="md:border-r md:border-night-900/10 md:pr-8">
+                        <p className="text-xs font-semibold uppercase tracking-widest text-terra-700/70">
                           {item.label}
                         </p>
                         {item.description && (
-                          <p className="mt-3 text-sm leading-relaxed text-white/80">
+                          <p className="mt-3 text-sm leading-relaxed text-night-800/80">
                             {item.description}
                           </p>
                         )}
                         <Link
                           href={item.href}
-                          className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-white transition-all hover:gap-2.5"
+                          className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-terra-700 transition-all hover:gap-2.5"
                         >
                           Ver visão geral
                           <span aria-hidden>→</span>
@@ -131,13 +131,13 @@ export default function Header() {
                           <Link
                             key={child.href}
                             href={child.href}
-                            className="rounded-lg px-3 py-2.5 transition hover:bg-white/10"
+                            className="rounded-lg px-3 py-2.5 transition hover:bg-white/70"
                           >
-                            <span className="block text-sm font-medium leading-snug text-white">
+                            <span className="block text-sm font-medium leading-snug text-night-900">
                               {child.label}
                             </span>
                             {child.description && (
-                              <span className="mt-0.5 block text-xs leading-snug text-white/60">
+                              <span className="mt-0.5 block text-xs leading-snug text-night-800/60">
                                 {child.description}
                               </span>
                             )}
