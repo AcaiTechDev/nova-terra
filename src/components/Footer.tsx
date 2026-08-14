@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="relative overflow-hidden border-t border-terra-900 text-white">
       <div
         className="absolute inset-0 -z-20 bg-cover bg-center"
-        style={{ backgroundImage: "url(/hero/fachada-desktop.webp)" }}
+        style={{ backgroundImage: "url(/hero/trigo-desktop.webp)" }}
       />
       <div className="absolute inset-0 -z-10 bg-night-900/85" />
 
