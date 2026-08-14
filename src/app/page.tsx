@@ -47,9 +47,9 @@ const heroSlides: HeroSlide[] = [
       { label: "Nossa missão e visão", href: "/quem-somos/missao-e-visao" },
     ],
     image: {
-      desktop: "/hero/trigo-desktop.webp",
-      mobile: "/hero/trigo-mobile.webp",
-      alt: "Trigo em destaque durante momento de adoração na Igreja Nova Terra",
+      desktop: "/hero/fachada-desktop.webp",
+      mobile: "/hero/fachada-mobile.webp",
+      alt: "Fachada da Igreja Nova Terra à noite, com o logo iluminado",
     },
   },
   {
