@@ -46,7 +46,7 @@ export default function FaleConoscoPage() {
           </p>
           <p className="text-sm text-night-800/70">E-mail: {site.email}</p>
           <div className="mt-2">
-            <Lacuna>telefone/WhatsApp oficial, e-mail e links de redes sociais</Lacuna>
+            <Lacuna>links de redes sociais (Instagram, YouTube, Facebook)</Lacuna>
           </div>
 
           <div className="mt-6">

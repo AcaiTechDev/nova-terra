@@ -5,11 +5,17 @@ export const site = {
   fullName: "Igreja Pentecostal Missionária Nova Terra",
   city: "Icoaraci, Belém-PA",
   address: "Travessa S-5, nº 199, Icoaraci, Belém-PA, CEP 66815-070",
-  // LACUNA: confirmar canal oficial de WhatsApp da igreja
-  whatsapp: "5591000000000",
-  whatsappDisplay: "(91) 00000-0000 — a confirmar",
+  whatsapp: "5591996088508",
+  whatsappDisplay: "(91) 99608-8508",
   // LACUNA: confirmar e-mail oficial
   email: "contato@igrejanovaterra.com.br",
+  pix: {
+    chave: "08.892.504/0001-75",
+    tipoChave: "CNPJ",
+    nome: "Yracy Couto Bezerra Saraiva",
+    banco: "Sicoob",
+    qrcode: "/qrcode-pix.webp",
+  },
   cultos: [
     { label: "Culto da Família (manhã)", quando: "Domingos, 08h30" },
     { label: "Culto da Família (noite)", quando: "Domingos, 18h30" },

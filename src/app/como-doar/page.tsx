@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import CTAButton from "@/components/CTAButton";
-import Lacuna from "@/components/Lacuna";
-import { whatsappLink } from "@/lib/site";
+import CopyPixButton from "@/components/CopyPixButton";
+import { site, whatsappLink } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Como Doar",
@@ -26,9 +26,40 @@ export default function ComoDoarPage() {
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-night-800/70">
               O sustento da igreja e de sua missão acontece através dos
-              dízimos e ofertas dos membros.
+              dízimos e ofertas dos membros. Contribua via PIX:
             </p>
-            <Lacuna>canal de doação online (PIX/gateway de pagamento)</Lacuna>
+
+            <div className="mt-5 flex flex-col items-center gap-6 rounded-xl bg-terra-50/60 p-6 sm:flex-row sm:items-start">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={site.pix.qrcode}
+                alt="QR Code para doação via PIX"
+                width={180}
+                height={180}
+                className="h-[180px] w-[180px] rounded-lg bg-white p-2 shadow-sm"
+              />
+              <div className="flex-1 text-center sm:text-left">
+                <dl className="space-y-2 text-sm text-night-800/80">
+                  <div>
+                    <dt className="font-semibold text-night-900">
+                      Chave PIX ({site.pix.tipoChave})
+                    </dt>
+                    <dd>{site.pix.chave}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-night-900">Nome</dt>
+                    <dd>{site.pix.nome}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-night-900">Banco</dt>
+                    <dd>{site.pix.banco}</dd>
+                  </div>
+                </dl>
+                <div className="mt-4">
+                  <CopyPixButton chave={site.pix.chave} />
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="rounded-2xl border border-terra-100 bg-white p-6 shadow-sm">

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import CTAButton from "@/components/CTAButton";
+import CopyPixButton from "@/components/CopyPixButton";
 import Lacuna from "@/components/Lacuna";
-import { whatsappLink } from "@/lib/site";
+import { site, whatsappLink } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Casa Amarela",
@@ -68,7 +69,35 @@ export default function CasaAmarelaPage() {
           </div>
           <div className="rounded-xl border border-terra-100 bg-terra-50/60 p-5">
             <p className="font-semibold text-night-900">Contribua financeiramente</p>
-            <Lacuna>chave PIX / dados bancários oficiais</Lacuna>
+            <div className="mt-3 flex flex-col items-center gap-5 sm:flex-row sm:items-start">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={site.pix.qrcode}
+                alt="QR Code para doação via PIX"
+                width={140}
+                height={140}
+                className="h-[140px] w-[140px] rounded-lg bg-white p-2 shadow-sm"
+              />
+              <div className="text-center sm:text-left">
+                <p className="text-sm text-night-800/80">
+                  <span className="font-semibold text-night-900">
+                    Chave PIX ({site.pix.tipoChave}):
+                  </span>{" "}
+                  {site.pix.chave}
+                </p>
+                <p className="text-sm text-night-800/80">
+                  <span className="font-semibold text-night-900">Nome:</span>{" "}
+                  {site.pix.nome}
+                </p>
+                <p className="text-sm text-night-800/80">
+                  <span className="font-semibold text-night-900">Banco:</span>{" "}
+                  {site.pix.banco}
+                </p>
+                <div className="mt-3">
+                  <CopyPixButton chave={site.pix.chave} />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
