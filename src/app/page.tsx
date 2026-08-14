@@ -1,6 +1,68 @@
 import Link from "next/link";
 import CTAButton from "@/components/CTAButton";
+import HeroSlider, { type HeroSlide } from "@/components/HeroSlider";
 import { site, whatsappLink } from "@/lib/site";
+
+const heroSlides: HeroSlide[] = [
+  {
+    id: "avivamento",
+    eyebrow: "Icoaraci, Belém-PA",
+    title: "Nós somos o Avivamento. E ele também pode ter o seu nome.",
+    subtitle:
+      "A Igreja Nova Terra existe para ganhar, cuidar e capacitar vidas para o Reino de Deus. Se você está buscando um lugar para recomeçar, crescer na fé ou servir, este é o seu convite.",
+    buttons: [
+      { label: "Quero visitar um culto", href: "/jornada-de-discipulado" },
+      {
+        label: "Quero pedir oração",
+        href: whatsappLink("Olá! Gostaria de pedir oração."),
+        variant: "secondary",
+        external: true,
+      },
+    ],
+  },
+  {
+    id: "culto",
+    title: "Aqui, cada domingo é um novo começo",
+    subtitle: "Vidas sendo transformadas, toda semana",
+    buttons: [
+      { label: "Ver horários dos cultos", href: "/jornada-de-discipulado" },
+    ],
+    image: {
+      desktop: "/hero/culto-desktop.webp",
+      mobile: "/hero/culto-mobile.webp",
+      alt: "Culto da Igreja Nova Terra com banda no palco e congregação reunida",
+    },
+  },
+  {
+    id: "avivamento-multiplicacao",
+    title: "Avivamento sem multiplicação morre",
+    buttons: [
+      { label: "Nossa missão e visão", href: "/quem-somos/missao-e-visao" },
+    ],
+    image: {
+      desktop: "/hero/trigo-desktop.webp",
+      mobile: "/hero/trigo-mobile.webp",
+      alt: "Trigo em destaque durante momento de adoração na Igreja Nova Terra",
+    },
+  },
+  {
+    id: "oracao",
+    title: "Um lugar seguro para orar e recomeçar",
+    buttons: [
+      {
+        label: "Quero pedir oração",
+        href: whatsappLink("Olá! Gostaria de pedir oração."),
+        variant: "secondary",
+        external: true,
+      },
+    ],
+    image: {
+      desktop: "/hero/oracao-desktop.webp",
+      mobile: "/hero/oracao-mobile.webp",
+      alt: "Mulher em momento de oração",
+    },
+  },
+];
 
 const destaques = [
   {
@@ -32,34 +94,7 @@ const destaques = [
 export default function HomePage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-white">
-        <div className="absolute inset-0 bg-gradient-to-br from-terra-50 via-white to-white" />
-        <div className="relative mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 sm:py-32">
-          <p className="text-sm font-semibold uppercase tracking-widest text-terra-600">
-            Icoaraci, Belém-PA
-          </p>
-          <h1 className="mt-4 font-serif text-3xl font-bold leading-tight text-night-900 sm:text-5xl">
-            Nós somos o Avivamento. E ele também pode ter o seu nome.
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-night-800/70 sm:text-lg">
-            A Igreja Nova Terra existe para ganhar, cuidar e capacitar vidas
-            para o Reino de Deus. Se você está buscando um lugar para
-            recomeçar, crescer na fé ou servir, este é o seu convite.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <CTAButton href="/jornada-de-discipulado">
-              Quero visitar um culto
-            </CTAButton>
-            <CTAButton
-              href={whatsappLink("Olá! Gostaria de pedir oração.")}
-              external
-              variant="secondary"
-            >
-              Quero pedir oração
-            </CTAButton>
-          </div>
-        </div>
-      </section>
+      <HeroSlider slides={heroSlides} />
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

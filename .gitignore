@@ -36,3 +36,6 @@ package.json.testoverwrite
 
 .vercel
 .env*
+
+# fotos originais em alta resolucao (nao otimizadas) - fonte para scripts/process-hero-images.mjs
+/imagens-site/
