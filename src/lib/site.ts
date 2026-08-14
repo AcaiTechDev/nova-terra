@@ -22,10 +22,10 @@ export const site = {
     { label: "JAVAN — Rede Jovem", quando: "Sábados, 19h" },
   ],
   social: {
-    // LACUNA: confirmar links reais
-    instagram: "#",
+    instagram: "https://www.instagram.com/novaterrabelem/",
+    // LACUNA: confirmar link do YouTube
     youtube: "#",
-    facebook: "#",
+    facebook: "https://www.facebook.com/profile.php?id=61592750885655",
   },
   founded: "25 de janeiro de 2007",
   closing: "Deus abençoe a cada um!",

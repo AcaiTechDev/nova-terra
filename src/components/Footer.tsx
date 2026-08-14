@@ -50,13 +50,23 @@ export default function Footer() {
             <li>WhatsApp: {site.whatsappDisplay}</li>
             <li>E-mail: {site.email}</li>
             <li className="flex gap-3 pt-2">
-              <a href={site.social.instagram} className="hover:text-terra-300">
+              <a
+                href={site.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-terra-300"
+              >
                 Instagram
               </a>
               <a href={site.social.youtube} className="hover:text-terra-300">
                 YouTube
               </a>
-              <a href={site.social.facebook} className="hover:text-terra-300">
+              <a
+                href={site.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-terra-300"
+              >
                 Facebook
               </a>
             </li>
