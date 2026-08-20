@@ -3,44 +3,42 @@
 import { useState, useTransition } from "react";
 import { inscreverEmEvento, type InscricaoState } from "@/app/eventos/actions";
 import type { Evento } from "@/lib/eventos";
-
-const WHATSAPP_CHANNEL_URL = "https://whatsapp.com/channel/0029Vb8xNRT5a24CnToFzT0H";
+import InscricaoSucessoModal from "@/components/InscricaoSucessoModal";
 
 export default function InscricaoForm({ evento }: { evento: Evento }) {
   const [state, setState] = useState<InscricaoState>({ status: "idle" });
   const [isPending, startTransition] = useTransition();
+  const [modalAberto, setModalAberto] = useState(false);
 
   async function handleSubmit(formData: FormData) {
     formData.set("eventoSlug", evento.slug);
     startTransition(async () => {
       const result = await inscreverEmEvento(state, formData);
       setState(result);
+      if (result.status === "success") setModalAberto(true);
     });
   }
 
   if (state.status === "success") {
     return (
-      <div className="rounded-2xl border border-terra-100 bg-terra-50/60 p-8 text-center">
-        <p className="font-serif text-xl font-semibold text-night-900">
-          Inscrição confirmada! 🎉
-        </p>
-        <p className="mt-2 text-sm leading-relaxed text-night-800/70">
-          Recebemos os seus dados para o evento &quot;{evento.titulo}&quot;.
-          Em breve alguém da equipe pode entrar em contato com mais
-          detalhes.
-        </p>
-        <a
-          href={WHATSAPP_CHANNEL_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-green-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-green-700"
-        >
-          Acompanhar pelo WhatsApp
-        </a>
-        <p className="mt-3 text-xs text-night-800/60">
-          Entre no nosso canal para acompanhar as novidades e o andamento do evento.
-        </p>
-      </div>
+      <>
+        <div className="rounded-2xl border border-terra-100 bg-terra-50/60 p-8 text-center">
+          <p className="font-serif text-xl font-semibold text-night-900">
+            Inscrição confirmada! 🎉
+          </p>
+          <p className="mt-2 text-sm leading-relaxed text-night-800/70">
+            Recebemos os seus dados para o evento &quot;{evento.titulo}&quot;.
+            Em breve alguém da equipe pode entrar em contato com mais
+            detalhes.
+          </p>
+        </div>
+        {modalAberto && (
+          <InscricaoSucessoModal
+            eventoTitulo={evento.titulo}
+            onClose={() => setModalAberto(false)}
+          />
+        )}
+      </>
     );
   }
 
