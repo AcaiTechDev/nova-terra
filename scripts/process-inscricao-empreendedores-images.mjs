@@ -7,15 +7,16 @@ const srcDir = path.join(__dirname, "..", "imagens-site", "paginas inscricao");
 const outDir = path.join(__dirname, "..", "public", "eventos", "empreendedores");
 
 async function run() {
-  // Hero de fundo (fachada Comercial do Norte) — cover full-bleed atras do degrade laranja
-  await sharp(path.join(srcDir, "fundo.png"))
-    .resize(1920, 1080, { fit: "cover", position: sharp.strategy.attention })
-    .webp({ quality: 80 })
+  // Hero de fundo (microfone + plateia, degrade laranja ja aplicado na imagem)
+  await sharp(path.join(srcDir, "hero.png"))
+    .resize(1920, 1080, { fit: "cover", position: "centre" })
+    .webp({ quality: 82 })
     .toFile(path.join(outDir, "hero-desktop.webp"));
 
-  await sharp(path.join(srcDir, "fundo.png"))
-    .resize(900, 1200, { fit: "cover", position: sharp.strategy.attention })
-    .webp({ quality: 80 })
+  // Mobile: recorte mais estreito alinhado a direita, para manter o microfone visivel
+  await sharp(path.join(srcDir, "hero.png"))
+    .resize(900, 1200, { fit: "cover", position: "right" })
+    .webp({ quality: 82 })
     .toFile(path.join(outDir, "hero-mobile.webp"));
 
   // Retrato do palestrante (James Holanda) para o card de credibilidade

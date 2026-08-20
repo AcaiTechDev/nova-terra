@@ -41,8 +41,8 @@ export default function InscricaoHero({
           className="absolute inset-0 h-full w-full object-cover"
         />
       </picture>
-      <div className="absolute inset-0 bg-gradient-to-t from-night-900 via-terra-900/85 to-terra-600/50" />
-      <div className="absolute inset-0 bg-gradient-to-r from-night-900/70 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-night-900/90 via-night-900/40 to-transparent" />
+      <div className="absolute inset-0 bg-black/15" />
 
       <div className="relative mx-auto max-w-4xl px-4 py-20 text-center sm:px-6 sm:py-28">
         <Reveal>
