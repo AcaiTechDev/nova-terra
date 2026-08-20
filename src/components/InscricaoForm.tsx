@@ -4,6 +4,8 @@ import { useState, useTransition } from "react";
 import { inscreverEmEvento, type InscricaoState } from "@/app/eventos/actions";
 import type { Evento } from "@/lib/eventos";
 
+const WHATSAPP_CHANNEL_URL = "https://whatsapp.com/channel/0029Vb8xNRT5a24CnToFzT0H";
+
 export default function InscricaoForm({ evento }: { evento: Evento }) {
   const [state, setState] = useState<InscricaoState>({ status: "idle" });
   const [isPending, startTransition] = useTransition();
@@ -26,6 +28,17 @@ export default function InscricaoForm({ evento }: { evento: Evento }) {
           Recebemos os seus dados para o evento &quot;{evento.titulo}&quot;.
           Em breve alguém da equipe pode entrar em contato com mais
           detalhes.
+        </p>
+        <a
+          href={WHATSAPP_CHANNEL_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-green-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-green-700"
+        >
+          Acompanhar pelo WhatsApp
+        </a>
+        <p className="mt-3 text-xs text-night-800/60">
+          Entre no nosso canal para acompanhar as novidades e o andamento do evento.
         </p>
       </div>
     );
